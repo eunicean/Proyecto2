@@ -1,3 +1,4 @@
+#CLASES
 USE mimenusin; #Conectar a la base datos
 
 DROP TABLE IF EXISTS ingredientesprincipales;

@@ -5,3 +5,4 @@ app.config['MYSQL_PASSWORD'] = ''           #
 app.config['MYSQL_DB'] = 'mimenusin'        #
 mysql = MySQL(app)                          #
 #CONECCION CON LA BASE DE DATOS-------------#
+
