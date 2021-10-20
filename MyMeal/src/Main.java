@@ -1,19 +1,19 @@
 import java.util.*;
+
+import modelos.Ingredientes;
 //ejemplo del uso de las clases
 public class Main {
 	public static void main(String[] args) {
-		System.out.println("Anotar");
-		ArrayList<Ingredientes> ListaIngrdientes = new ArrayList<>();
-		ListaIngrdientes.add(new Ingredientes("Maiz","1 libra"));
-		ListaIngrdientes.add(new Ingredientes("Apio","2 libra"));
-		ListaIngrdientes.add(new Ingredientes("frijol","3 libra"));
 		
-		Pizza p1 = new Pizza("Jamon", ListaIngrdientes); //crear objeto, darle nombre, lista de ingredientes y obtener el proceso
-		p1.proceso();
+		Ingredientes[] ListaIngrdientes = new Ingredientes[3];
+		ListaIngrdientes[0] = (new Ingredientes("Chocolate","1 libra"));
+		ListaIngrdientes[1] = (new Ingredientes("",""));
+		ListaIngrdientes[2] = (new Ingredientes("",""));
 		
-		Pizza p2 = new Pizza("Hawaiana", ListaIngrdientes);
-		p2.proceso();
+		Platillo p1 = new Platillo("Crepa Choco", ListaIngrdientes);
 		
+		
+		System.out.println("final");
 		
 		/*for(int i=ListaIngrdientes.size()-1; i>=0; i--) {
 			

@@ -1,12 +1,12 @@
+package modelos;
 import java.util.*;
 
 //clase abstracta para herencia.
-//todo mal
 public abstract class Receta {
 	private String nombre;
-	private ArrayList<Ingredientes> ListaIngredientes;
+	private Ingredientes[] ListaIngredientes;
 	
-	public Receta(String nombre, ArrayList<Ingredientes> listaIngredientes) {
+	public Receta(String nombre, Ingredientes[] listaIngredientes) {
 		this.nombre = nombre;
 		this.ListaIngredientes = listaIngredientes;
 	}
@@ -22,11 +22,11 @@ public abstract class Receta {
 		this.nombre = nombre;
 	}
 
-	public ArrayList<Ingredientes> getListaIngredientes() {
+	public Ingredientes[] getListaIngredientes() {
 		return ListaIngredientes;
 	}
 
-	public void setListaIngredientes(ArrayList<Ingredientes> listaIngredientes) {
+	public void setListaIngredientes(Ingredientes[] listaIngredientes) {
 		ListaIngredientes = listaIngredientes;
 	}
 	

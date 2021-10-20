@@ -1,0 +1,104 @@
+DROP DATABASE IF EXISTS platillos;
+CREATE DATABASE platillos;
+USE platillos;
+
+CREATE TABLE ingrediente(
+	id_ingrediente			INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nombre_ingrediente		VARCHAR(100),
+    cantidad_ingrediente 	VARCHAR(100),
+    id_receta				INT
+);
+
+CREATE TABLE receta(
+	id_receta		INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nombre_receta	VARCHAR(100)
+);
+
+
+DROP PROCEDURE IF EXISTS add_receta;
+DELIMITER //
+CREATE PROCEDURE add_receta
+(
+	IN cnombre_receta    		VARCHAR(100),
+	IN cnombre_ingrediente1   	VARCHAR(100),
+    IN ccantidad_ingrediente1	VARCHAR(100),
+	IN cnombre_ingrediente2   	VARCHAR(100),
+    IN ccantidad_ingrediente2	VARCHAR(100),
+	IN cnombre_ingrediente3   	VARCHAR(100),
+    IN ccantidad_ingrediente3	VARCHAR(100)
+)
+BEGIN
+DECLARE EXIT HANDLER FOR SQLEXCEPTION
+BEGIN
+    ROLLBACK;
+    SHOW ERRORS;
+END;
+	
+	INSERT INTO receta(nombre_receta) VALUES (cnombre_receta);
+    
+    SET @id_ultima_receta =  (SELECT COUNT(*) from receta);
+    
+    INSERT INTO ingrediente(nombre_ingrediente, cantidad_ingrediente, id_receta)
+	VALUES
+	(cnombre_ingrediente1, ccantidad_ingrediente1, @id_ultima_receta),
+	(cnombre_ingrediente2, ccantidad_ingrediente2, @id_ultima_receta),
+	(cnombre_ingrediente3, ccantidad_ingrediente3, @id_ultima_receta);
+
+END //
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS get_recetas;
+DELIMITER //
+CREATE PROCEDURE get_recetas()
+BEGIN
+DECLARE EXIT HANDLER FOR SQLEXCEPTION
+BEGIN
+    ROLLBACK;
+    SHOW ERRORS;
+END;
+	SELECT 
+	i.id_ingrediente,
+    i.cantidad_ingrediente,
+    i.nombre_ingrediente,
+    (SELECT nombre_receta FROM receta r WHERE r.id_receta = i.id_receta) as nombreReceta
+	FROM ingrediente i;
+END //
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS get_receta;
+DELIMITER //
+CREATE PROCEDURE get_receta(
+	IN cid_receta	INT
+)
+BEGIN
+DECLARE EXIT HANDLER FOR SQLEXCEPTION
+BEGIN
+    ROLLBACK;
+    SHOW ERRORS;
+END;
+	SELECT 
+	i.id_ingrediente,
+    i.cantidad_ingrediente,
+    i.nombre_ingrediente,
+    (SELECT nombre_receta FROM receta r WHERE r.id_receta = i.id_receta) as nombreReceta
+	FROM ingrediente i
+	WHERE i.id_receta = cid_receta;
+END //
+DELIMITER ;
+
+CALL add_receta(
+'TORTILLA DE PATATA RELLENA DE QUESO Y JAMON',
+'Patata Mediana', '3 unidades',
+'Huevos', '5 unidades', 
+'Cebolla', '1/2 unidad'
+);
+
+CALL add_receta('PALITOS DE QUESO', 'Queso Blando', '500 gramos', '', '', '', '');
+
+CALL get_recetas();
+
+CALL get_receta(1);
+
+
+
+
