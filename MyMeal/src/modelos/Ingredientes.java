@@ -21,4 +21,12 @@ public class Ingredientes {
 	public void setCantidades(String cantidades) {
 		this.Cantidades = cantidades;
 	}
+	
+	public void imprimir() {
+		System.out.println("* " + this.Nombre + ", " +this.Cantidades);
+	}
+	 public String imprimir_p_query() {
+		 return "'" +this.Nombre + "', '" +this.Cantidades+"'";
+		
+	}
 }
