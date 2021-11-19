@@ -7,7 +7,7 @@ public class Ingredientes {
 	public Ingredientes(String nombre, String cantidades) {
 		this.Nombre = nombre;
 		this.Cantidades = cantidades;
-	}
+	} 
 	//getters setter
 	public String getNombre() {
 		return Nombre;
@@ -22,6 +22,7 @@ public class Ingredientes {
 		this.Cantidades = cantidades;
 	}
 	
+	//Metodos
 	public void imprimir() {
 		System.out.println("* " + this.Nombre + ", " +this.Cantidades);
 	}

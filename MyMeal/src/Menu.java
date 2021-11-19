@@ -1,7 +1,5 @@
 import java.util.Scanner;
 
-import Controlador.Controlador_recetas;
-import Controlador.Controlador_user;
 import modelos.Ingredientes;
 import modelos.Receta;
 import modelos.Usuarios;
@@ -11,10 +9,10 @@ public class Menu {
 	
 	public void menu() {
 		while(true) {
-			System.out.println("==========Bienvenid a MyMeal==========");
+			System.out.println("\n==========Bienvenid a MyMeal==========");
 			System.out.println("1) Log In");
 			System.out.println("2) Registrarse");
-			System.out.println("3) Salolir");
+			System.out.println("3) Salir");
 			String key = sn.nextLine();
 			System.out.println(key);
 			
@@ -62,16 +60,16 @@ public class Menu {
 	}
 	
 	
-	public void menu2() {
+	public void menu2() { //menu al cual el administrador tiene acceso
 		while(true) {
-			System.out.println("=====Menu MyMeal=====");
+			System.out.println("\n=====Menu MyMeal=====");
 			System.out.println("1) Ingresar receta");
 			System.out.println("2) Eliminar receta");
 			System.out.println("3) Listar recetas");
-			System.out.println("4) Buscar por ingrediente");
-			System.out.println("5) Cerrar sesion");
+			System.out.println("4) Mostrar receta con pasos");
+			System.out.println("5) Buscar por ingrediente");
+			System.out.println("6) Cerrar sesion");
 			String key = sn.nextLine();
-			System.out.println(key);
 			switch (key) {
 			case "1":
 				System.out.println("=====Agregar receta=====");
@@ -82,8 +80,9 @@ public class Menu {
 				String cigd2 = pedir_valor("Cantidades del segundo ingrediente");
 				String igdt3 = pedir_valor("Tercer ingrediente").toLowerCase();
 				String cigd3 = pedir_valor("Cantidades del tercer ingrediente");
+				String pasos = pedir_valor("Pasos de la receta");
 				
-				Receta n_receta = new Receta(nmb_r);
+				Receta n_receta = new Receta(nmb_r," ",pasos);
 				n_receta.add_ingrediente(new Ingredientes(igdt1,cigd1));
 				n_receta.add_ingrediente(new Ingredientes(igdt2,cigd2));
 				n_receta.add_ingrediente(new Ingredientes(igdt3,cigd3));
@@ -102,31 +101,41 @@ public class Menu {
 				break;
 			case "3":
 				Controlador.Controlador_recetas.get_recetas().imprimir_recetas();
+				
 				break;
 			case "4":
+				Controlador.Controlador_recetas.get_recetas().imprimir_recetas();
+				
+				String recetea = pedir_valor("Id de la receta para mostrar pasos");
+				Controlador.Controlador_recetas.pasos_receta(recetea);
+
+				Controlador.Controlador_recetas.pasos_receta(recetea).imprimir_recetas_pasos();
+				break;
+			case "5":
 				String n_ingr = pedir_valor("Nombre del ingrediente");
 				
 				Controlador.Controlador_recetas.get_recetas().imprimir_recetas_c_ingrdiente(n_ingr);
 				break;
-			case "5":
+			case "6":
 				System.out.println("Regresando al menu principal ...");
 				return;
 
 			default:
 				break;
 			}
+			System.out.println("");	
 			esperar();
 		}
 	}
 	
-	public void menu3() {
+	public void menu3() {//visitantes
 		while(true) {
-			System.out.println("=====Menu MyMeal=====");
+			System.out.println("\n=====Menu MyMeal=====");
 			System.out.println("1) Listar recetas");
 			System.out.println("2) Buscar por ingrediente");
-			System.out.println("3) Cerrar sesion");
+			System.out.println("3) Mostrar receta con pasos");
+			System.out.println("4) Cerrar sesion");
 			String key = sn.nextLine();
-			System.out.println(key);
 			switch (key) {
 			case "1":
 				Controlador.Controlador_recetas.get_recetas().imprimir_recetas();
@@ -137,6 +146,14 @@ public class Menu {
 				Controlador.Controlador_recetas.get_recetas().imprimir_recetas_c_ingrdiente(n_ingr);
 				break;
 			case "3":
+				Controlador.Controlador_recetas.get_recetas().imprimir_recetas();
+				
+				String recetea = pedir_valor("Id de la receta para mostrar pasos");
+				Controlador.Controlador_recetas.pasos_receta(recetea);
+
+				Controlador.Controlador_recetas.pasos_receta(recetea).imprimir_recetas_pasos();
+				break;
+			case "4":
 				System.out.println("Regresando al menu principal ...");
 				return;
 
