@@ -5,7 +5,6 @@ import java.util.*;
 public class conexion {
 	
 	public ArrayList<ArrayList<String>> consulta(String query, int columnas) {
-		//String ret = "";
 		ArrayList<ArrayList<String>> L = new ArrayList<>();
 		ResultSet rs;
 		try {
@@ -28,7 +27,7 @@ public class conexion {
 			return L;
 		}
 	}
-	
+
 	public boolean consulta(String query) {
 
 		try {

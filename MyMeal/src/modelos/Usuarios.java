@@ -5,6 +5,7 @@ public class Usuarios {
 	private String contrasenia;
 	private String rol;
 	
+	//setters getters
 	public String getRol() {
 		return rol;
 	}
@@ -12,27 +13,6 @@ public class Usuarios {
 	public void setRol(String rol) {
 		this.rol = rol;
 	}
-
-	public Usuarios(String usuario, String contrasenia,String rol) {
-		this.usuario = usuario;
-		this.contrasenia = contrasenia;
-		this.rol = rol;
-	}
-	
-	public Usuarios(String usuario, String contrasenia) {
-		super();
-		this.usuario = usuario;
-		this.contrasenia = contrasenia;
-		this.rol = "0";
-	}
-
-	public boolean VerificarUsuario() {
-		if(this.getUsuario().equals("eu") && this.getContrasenia().equals("123")) {
-			return true;
-		}
-		return false;
-	}
-	
 	public String getContrasenia() {
 		return contrasenia;
 	}
@@ -48,6 +28,29 @@ public class Usuarios {
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
+	
+	//constructores
+	public Usuarios(String usuario, String contrasenia,String rol) {
+		this.usuario = usuario;
+		this.contrasenia = contrasenia;
+		this.rol = rol;
+	}
+	
+	public Usuarios(String usuario, String contrasenia) {
+		this.usuario = usuario;
+		this.contrasenia = contrasenia;
+		this.rol = "0";
+	}
+
+	//metodos
+	/*public boolean VerificarUsuario_basico() {
+		if(this.getUsuario().equals("eu") && this.getContrasenia().equals("123")) {
+			return true;
+		}
+		return false;
+	}*/
+	
+	
 	
 	
 }

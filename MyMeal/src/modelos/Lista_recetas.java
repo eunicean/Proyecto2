@@ -38,4 +38,11 @@ public class Lista_recetas {
 		}
 		
 	}
+	//
+	public void imprimir_recetas_pasos() {
+		for (Receta receta : Listad_recetas) {
+			receta.imprimir_c_ingrediente_pasos();
+		}
+		
+	}
 }

@@ -1,9 +1,6 @@
 package Controlador;
 
-
-import java.sql.*;
 import java.util.*;
-
 import modelos.Usuarios;
 
 public class Controlador_user {
@@ -12,7 +9,7 @@ public class Controlador_user {
 	public static void get_users() {
 		try {
 			String query = "CALL get_users()";
-			ArrayList<ArrayList<String>> rs = Conec.consulta(query,3); //se envía el query a la base de datos
+			ArrayList<ArrayList<String>> rs = Conec.consulta(query,3); 
 			for (ArrayList<String> arrayList : rs) {
 				System.out.println(String.join(",", arrayList));
 			}
@@ -22,7 +19,7 @@ public class Controlador_user {
 	public static void create_users(Usuarios user_n) {
 		try {
 			String query = "CALL create_users('"+ user_n.getUsuario()+ "','"+user_n.getContrasenia()+"',"+user_n.getRol()+")";
-			Conec.consulta(query); //se envía el query a la base de datos
+			Conec.consulta(query); 
 			
 		}catch(Exception e){ System.out.println(e);}
 	}
