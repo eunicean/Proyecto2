@@ -9,7 +9,7 @@ public class Menu {
 	
 	public void menu() {
 		while(true) {
-			System.out.println("\n==========Bienvenid a MyMeal==========");
+			System.out.println("\n==========Bienvenido a MyMeal==========");
 			System.out.println("1) Log In");
 			System.out.println("2) Registrarse");
 			System.out.println("3) Salir");
@@ -82,7 +82,7 @@ public class Menu {
 				String cigd3 = pedir_valor("Cantidades del tercer ingrediente");
 				String pasos = pedir_valor("Pasos de la receta");
 				
-				Receta n_receta = new Receta(nmb_r," ",pasos);
+				Receta n_receta = new Receta(nmb_r,"0",pasos);
 				n_receta.add_ingrediente(new Ingredientes(igdt1,cigd1));
 				n_receta.add_ingrediente(new Ingredientes(igdt2,cigd2));
 				n_receta.add_ingrediente(new Ingredientes(igdt3,cigd3));

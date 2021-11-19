@@ -53,7 +53,7 @@ public class Receta {
 	}
 		
 	public String imprimir_p_query() {
-		return "'" + this.nombre+"'," + ListaIngredientes.get(0).imprimir_p_query() + "," + ListaIngredientes.get(1).imprimir_p_query() + "," + ListaIngredientes.get(2).imprimir_p_query()+ "," +this.pasos;
+		return "'" + this.nombre+"'," + ListaIngredientes.get(0).imprimir_p_query() + "," + ListaIngredientes.get(1).imprimir_p_query() + "," + ListaIngredientes.get(2).imprimir_p_query()+ ",'" +this.pasos+"'";
 		
 	}
 	

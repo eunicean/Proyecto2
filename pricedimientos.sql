@@ -84,7 +84,6 @@ END;
 	FROM ingrediente i;
 END //
 DELIMITER ;
-CALL get_recetas();
 
 #obtener las recetas con pasos
 DROP PROCEDURE IF EXISTS get_recetas_pasos;
